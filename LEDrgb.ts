@@ -39,9 +39,9 @@ namespace Servo {
     let initialized = false
 
     export enum LED { 
-        red = 0,
-        green = 1,
-        blue = 2
+        红灯 = 0,
+        绿灯 = 1,
+        蓝灯 = 2
     }
 
     function i2cwrite(addr: number, reg: number, value: number) {
@@ -117,7 +117,7 @@ namespace Servo {
 	 * Servo Execute
 	 * @param pulse [500-2500] pulse of servo; eg: 1500, 500, 2500
 	*/
-    //% blockId=setServoPulse block="LED  灯类型|%channel|亮度 %pulse"
+    //% blockId=setServoPulse block="LED灯  灯颜色选择|%channel|亮度 %pulse"
     //% weight=85
     //% pulse.min=500 pulse.max=2500
     export function ServoPulse(channel: LED,pulse: number): void {
