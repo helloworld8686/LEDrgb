@@ -38,6 +38,12 @@ namespace Servo {
 
     let initialized = false
 
+    export enum LED { 
+        red = 0,
+        green = 1,
+        blue = 2
+    }
+
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
@@ -97,7 +103,7 @@ namespace Servo {
     //% blockId=setServo block="Servo channel|%channel|degree %degree"
     //% weight=85
     //% degree.min=0 degree.max=180
-    export function Servo(channel: number,degree: number): void {
+    export function Servo(channel: LED,degree: number): void {
 		if (!initialized) {
             initPCA9685();
         }
@@ -111,10 +117,10 @@ namespace Servo {
 	 * Servo Execute
 	 * @param pulse [500-2500] pulse of servo; eg: 1500, 500, 2500
 	*/
-    //% blockId=setServoPulse block="Servo channel|%channel|pulse %pulse"
+    //% blockId=setServoPulse block="LED  灯类型|%channel|亮度 %pulse"
     //% weight=85
     //% pulse.min=500 pulse.max=2500
-    export function ServoPulse(channel: number,pulse: number): void {
+    export function ServoPulse(channel: LED,pulse: number): void {
 		if (!initialized) {
             initPCA9685();
         }
