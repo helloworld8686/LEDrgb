@@ -59,15 +59,21 @@ namespace Servo {
 
     function initPCA9685(): void {
         i2cwrite(PCA9685_ADDRESS, MODE1, 0x00)
-        setFreq(50);
+        setFreq(1000);
         setPwm(0, 0, 4095);
         for (let idx = 1; idx < 16; idx++) {
             setPwm(idx, 0, 0);
         }
         initialized = true
     }
-
-    function setFreq(freq: number): void {
+	/**
+	 * Servo Execute
+	 * @param degree [0-180] degree of servo; eg: 90, 0, 180
+	*/
+    //% blockId=setFreq block="LED输出 频率设置|%freq"
+    //% weight=85
+    //% degree.min=0 degree.max=180
+    export function setFreq(freq: number): void {
         // Constrain the frequency
         let prescaleval = 25000000;
         prescaleval /= 4096;
