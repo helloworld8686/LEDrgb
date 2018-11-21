@@ -6,7 +6,7 @@
 /**
  * 自定义图形块
  */
-//% weight=5 color=#0fbc11 icon="\uf113" block="LEDrgb"
+//% weight=5 color=#0fbc11 icon="\uf114" block="LEDrgb"
 namespace Servo {
     const PCA9685_ADDRESS = 0x41
     const MODE1 = 0x00
