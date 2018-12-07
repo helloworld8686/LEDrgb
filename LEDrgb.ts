@@ -37,6 +37,7 @@ namespace Servo {
     const STP_CHD_H = 1023
 
     let initialized = false
+    
 
     export enum LED { 
         红灯 = 0,
