@@ -43,7 +43,7 @@ namespace Servo {
         绿灯 = 1,
         蓝灯 = 2
     }
-
+    
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
         buf[0] = reg
