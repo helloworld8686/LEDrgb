@@ -147,6 +147,7 @@ namespace makerbit {
                 setPwm(LED_G, 0, (256*16-1));
                 setPwm(LED_B, 0, 0);    
         }
+
         if (color == ColorList.blue)
         {
                 setPwm(LED_R, 0, 0);
@@ -167,6 +168,7 @@ namespace makerbit {
                 setPwm(LED_G, 0, (256*16-1));
                 setPwm(LED_B, 0, (256*16-1));    
         }
+        
         if (color == ColorList.violet)
         {
                 setPwm(LED_R, 0, (256*16-1));
