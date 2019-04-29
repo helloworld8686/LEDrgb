@@ -6,8 +6,8 @@
 /**
  * 自定义图形块
  */
-//% weight=5 color=#0fbc11 icon="\uf0eb" block="LEDrgb"
-namespace Servo {
+
+namespace makerbit {
     const PCA9685_ADDRESS = 0x41
     const MODE1 = 0x00
     const MODE2 = 0x01
@@ -100,6 +100,7 @@ namespace Servo {
 	 * Servo Execute
 	 * @param degree [0-180] degree of servo; eg: 90, 0, 180
 	*/
+    //% subcategory="彩灯"
     //% blockId=setServo block="Servo channel|%channel|degree %degree"
     //% weight=85
     //% degree.min=0 degree.max=180
@@ -117,6 +118,7 @@ namespace Servo {
 	 * Servo Execute
 	 * @param pulse [500-2500] pulse of servo; eg: 1500, 500, 2500
 	*/
+    //% subcategory="彩灯"
     //% blockId=setServoPulse block="LED灯  灯颜色选择|%channel|亮度 %pulse"
     //% weight=85
     //% pulse.min=0 pulse.max=19999
