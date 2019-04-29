@@ -6,26 +6,23 @@
 /**
  * 自定义图形块
  */
-enum ColorList {
+const enum ColorList {
     //% block="红"
-    red = 1,
-    //% block="橙"
-    orange = 2,     /*R 255  G 153 B 102*/ 
-    //% block="黄"
-    yellow = 3,     /*R 255  G 255 B 000*/ 
+    red = 1, 
     //% block="绿"
-    green = 4,     /**/ 
+    green = 2,     
     //% block="蓝"
-    blue = 5,       /**/    
-    //% block="靛"
-    indigo = 6,      /*R 000  G 255 B 255*/ 
-    //% block="浅紫"
-    violet = 7,     /*R 128  G 000 B 255*/ 
-
+    blue = 3,           
+    //% block="黄"
+    yellow = 4,     /*R 255  G 255 B 000*/ 
+    //% block="青"
+    indigo = 5,      /*R 000  G 255 B 255*/ 
+    //% block="紫"
+    violet = 6,     /*R 255  G 000 B 255*/ 
     //% block="白"
-    white = 8,
+    white = 7,
     //% block="黑"
-    black = 9
+    black = 8
 }
 
 namespace makerbit {
@@ -142,18 +139,8 @@ namespace makerbit {
                 setPwm(LED_G, 0, 0);
                 setPwm(LED_B, 0, 0);    
         }
-        if (color == ColorList.orange)
-        {
-                setPwm(LED_R, 0, (256*16-1));
-                setPwm(LED_G, 0, (153*16-1));
-                setPwm(LED_B, 0, (102*16-1));    
-        }
-        if (color == ColorList.yellow)
-        {
-                setPwm(LED_R, 0, (256*16-1));
-                setPwm(LED_G, 0, (256*16-1));
-                setPwm(LED_B, 0, 0);    
-        }
+
+
         if (color == ColorList.green)
         {
                 setPwm(LED_R, 0, 0);
@@ -166,6 +153,14 @@ namespace makerbit {
                 setPwm(LED_G, 0, 0);
                 setPwm(LED_B, 0, (256*16-1));    
         }
+
+        if (color == ColorList.yellow)
+        {
+                setPwm(LED_R, 0, (256*16-1));
+                setPwm(LED_G, 0, (256*16-1));
+                setPwm(LED_B, 0, 0);    
+        }
+
         if (color == ColorList.indigo)
         {
                 setPwm(LED_R, 0, 0);
