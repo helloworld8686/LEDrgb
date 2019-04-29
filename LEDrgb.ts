@@ -6,6 +6,27 @@
 /**
  * 自定义图形块
  */
+enum ColorList {
+    //% block="红"
+    red = 1,
+    //% block="橙"
+    orange = 2,     /*R 255  G 153 B 102*/ 
+    //% block="黄"
+    yellow = 3,     /*R 255  G 255 B 000*/ 
+    //% block="绿"
+    green = 4,     /**/ 
+    //% block="蓝"
+    blue = 5,       /**/    
+    //% block="靛"
+    indigo = 6,      /*R 000  G 255 B 255*/ 
+    //% block="浅紫"
+    violet = 7,     /*R 128  G 000 B 255*/ 
+
+    //% block="白"
+    white = 8,
+    //% block="黑"
+    black = 9
+}
 
 namespace makerbit {
     const PCA9685_ADDRESS = 0x41
@@ -36,6 +57,10 @@ namespace makerbit {
     const STP_CHD_L = 3071
     const STP_CHD_H = 1023
 
+    const LED_R =   0
+    const LED_G =   1
+    const LED_B =   2
+
     let initialized = false
     
 
@@ -44,6 +69,7 @@ namespace makerbit {
         绿灯 = 1,
         蓝灯 = 2
     }
+
     
     function i2cwrite(addr: number, reg: number, value: number) {
         let buf = pins.createBuffer(2)
@@ -96,38 +122,77 @@ namespace makerbit {
         pins.i2cWriteBuffer(PCA9685_ADDRESS, buf);
     }
 
-	/**
-	 * Servo Execute
-	 * @param degree [0-180] degree of servo; eg: 90, 0, 180
-	*/
-    //% subcategory="彩灯"
-    //% blockId=setServo block="Servo channel|%channel|degree %degree"
-    //% weight=85
-    //% degree.min=0 degree.max=180
-    export function Servo(channel: LED,degree: number): void {
-		if (!initialized) {
-            initPCA9685();
-        }
-		// 50hz: 20,000 us
-        let v_us = (degree * 1800 / 180 + 600); // 0.6 ~ 2.4
-        let value = v_us * 4096 / 20000;
-        setPwm(channel, 0, value);
-    }
+
 	
 	/**
 	 * Servo Execute
 	 * @param pulse [500-2500] pulse of servo; eg: 1500, 500, 2500
 	*/
     //% subcategory="彩灯"
-    //% blockId=setServoPulse block="LED灯  灯颜色选择|%channel|亮度 %pulse"
+    //% blockId=setRGBled block="彩灯  颜色设为 %ColorValue|色"
     //% weight=85
-    //% pulse.min=0 pulse.max=19999
-    export function ServoPulse(channel: LED,pulse: number): void {
+    export function setRGB(color: ColorList): void {
 		if (!initialized) {
             initPCA9685();
         }
-		// 50hz: 20,000 us
-        let value = pulse * 4096 / 20000;
-        setPwm(channel, 0, value);
+
+        if (color == ColorList.red)
+        {
+                setPwm(LED_R, 0, (256*16-1));
+                setPwm(LED_G, 0, 0);
+                setPwm(LED_B, 0, 0);    
+        }
+        if (color == ColorList.orange)
+        {
+                setPwm(LED_R, 0, (256*16-1));
+                setPwm(LED_G, 0, (153*16-1));
+                setPwm(LED_B, 0, (102*16-1));    
+        }
+        if (color == ColorList.yellow)
+        {
+                setPwm(LED_R, 0, (256*16-1));
+                setPwm(LED_G, 0, (256*16-1));
+                setPwm(LED_B, 0, 0);    
+        }
+        if (color == ColorList.green)
+        {
+                setPwm(LED_R, 0, 0);
+                setPwm(LED_G, 0, (256*16-1));
+                setPwm(LED_B, 0, 0);    
+        }
+        if (color == ColorList.blue)
+        {
+                setPwm(LED_R, 0, 0);
+                setPwm(LED_G, 0, 0);
+                setPwm(LED_B, 0, (256*16-1));    
+        }
+        if (color == ColorList.indigo)
+        {
+                setPwm(LED_R, 0, 0);
+                setPwm(LED_G, 0, (256*16-1));
+                setPwm(LED_B, 0, (256*16-1));    
+        }
+        if (color == ColorList.violet)
+        {
+                setPwm(LED_R, 0, (256*16-1));
+                setPwm(LED_G, 0, 0);
+                setPwm(LED_B, 0, (256*16-1));    
+        }
+
+        if (color == ColorList.white)
+        {
+                setPwm(LED_R, 0, (256*16-1));
+                setPwm(LED_G, 0, (256*16-1));
+                setPwm(LED_B, 0, (256*16-1));    
+        }
+
+        if (color == ColorList.black)
+        {
+                setPwm(LED_R, 0, 0);
+                setPwm(LED_G, 0, 0);
+                setPwm(LED_B, 0, 0);    
+        }             
+
     }
+
 }
