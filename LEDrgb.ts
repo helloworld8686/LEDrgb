@@ -208,8 +208,10 @@ namespace makerbit {
     //% subcategory="彩灯"
     //% block="彩灯  颜色设为 $color"
     //% color.shadow="colorNumberPicker"
-    export function setColor(color: number):number {
-        return color;
+    export function setColor(color: number) {       
+        setPwm(LED_R, 0, (color>>16));
+        setPwm(LED_G, 0, ((color>>8)&0xff));
+        setPwm(LED_B, 0, (color&0xff));        
     }   
 
 	/**
