@@ -200,7 +200,18 @@ namespace makerbit {
         }             
 
     }
-    
+
+	/**
+	 * Servo Execute
+	 * @param pulse [500-2500] pulse of servo; eg: 1500, 500, 2500
+	*/
+    //% subcategory="彩灯"
+    //% block="彩灯  颜色设为 $color"
+    //% color.shadow="colorNumberPicker"
+    export function setColor(color: number):number {
+        return color;
+    }   
+
 	/**
 	 * Servo Execute
 	 * @param degree [0-180] degree of servo; eg: 90, 0, 180
