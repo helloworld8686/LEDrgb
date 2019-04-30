@@ -1,6 +1,6 @@
 {
     "name": "LEDrgb",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "LEDrgb by cxk",
     "dependencies": {
         "core": "*",
