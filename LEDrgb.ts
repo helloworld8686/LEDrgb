@@ -55,8 +55,8 @@ namespace makerbit {
     const STP_CHD_H = 1023
 
     const LED_R =   0
-    const LED_G =   1
-    const LED_B =   2
+    const LED_G =   2
+    const LED_B =   1
 
     let initialized = false
     
